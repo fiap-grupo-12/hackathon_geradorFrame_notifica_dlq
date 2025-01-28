@@ -3,6 +3,7 @@ using Amazon.Lambda.S3Events;
 using hackaton_geradorFrame_notifica_dlq.Domain.Model;
 using hackaton_geradorFrame_notifica_dlq.Infra.Interface;
 using Microsoft.Extensions.DependencyInjection;
+using System.Text.Json;
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
 [assembly: LambdaSerializer(typeof(Amazon.Lambda.Serialization.SystemTextJson.DefaultLambdaJsonSerializer))]
@@ -41,6 +42,8 @@ namespace hackaton_geradorFrame_notifica_dlq
             //[LambdaFunction]
         public async Task FunctionHandler(S3Event evnt, ILambdaContext context)
         {
+            context.Logger.LogInformation($"Mensagem Recebida: {JsonSerializer.Serialize(evnt)}");
+
             foreach (var message in evnt.Records)
             {
                 await ProcessMessageAsync(message.S3, context);

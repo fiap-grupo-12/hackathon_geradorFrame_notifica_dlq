@@ -7,16 +7,16 @@ namespace hackaton_geradorFrame_notifica_dlq.Domain.Model
     [ExcludeFromCodeCoverage]
     public class Email
     {
-        [JsonPropertyName("destinatario")]
+        [JsonPropertyName("Email")]
         public string Destinatario { get; set; }
 
-        [JsonPropertyName("nome")]
+        [JsonPropertyName("Nome")]
         public string Nome { get; set; }
 
-        [JsonPropertyName("assunto")]
+        [JsonPropertyName("Assunto")]
         public string Assunto { get; set; }
 
-        [JsonPropertyName("mensagem")]
+        [JsonPropertyName("Corpo")]
         public string Mensagem { get; set; }
 
         public Email GerarEmailErro(Requisitante requisitante, string nomeVideo) => new Email

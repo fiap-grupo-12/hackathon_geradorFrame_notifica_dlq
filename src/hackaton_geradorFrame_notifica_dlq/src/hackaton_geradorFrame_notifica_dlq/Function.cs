@@ -59,7 +59,7 @@ namespace hackaton_geradorFrame_notifica_dlq
             var requisitante = await _requisitanteRepository.GetById(arquivoRequest.IdRequest);
 
             if (requisitante == null)
-                throw new Exception("Requisitante não encontrado na base.");
+                throw new Exception("Requisitante nao encontrado na base.");
 
             var jsonBody = new Email().GerarEmailJsonErro(requisitante, arquivoRequest.Video);
 

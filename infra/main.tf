@@ -89,14 +89,14 @@ resource "aws_lambda_function" "lambda_notifica_dlq_function" {
 resource "aws_lambda_permission" "permission_lambda_notifica_dlq" {
   statement_id  = "AllowSQSTrigger"
   action        = "lambda:InvokeFunction"
-  function_name = data.aws_lambda_function.lambda_notifica_dlq_function.function_name
+  function_name = aws_lambda_function.lambda_notifica_dlq_function.function_name
   principal     = "sqs.amazonaws.com"
   source_arn    = aws_sqs_queue.sqs_processar_arquivo_dlq.arn
 }
 
-resource "aws_lambda_event_source_mapping" "sqs_to_lambda_pagamento_pedido" {
+resource "aws_lambda_event_source_mapping" "sqs_to_lambda_notifica_dlq" {
   event_source_arn = aws_sqs_queue.sqs_processar_arquivo_dlq.arn
-  function_name    = data.aws_lambda_function.lambda_notifica_dlq_function.function_name
+  function_name    = aws_lambda_function.lambda_notifica_dlq_function.function_name
   batch_size       = 10
   enabled          = true
 }

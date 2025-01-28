@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./src/hackaton_geradorFrame_notifica_dlq
+        working-directory: ./src/hackaton_geradorFrame_notifica_dlq/src/hackaton_geradorFrame_notifica_dlq
         shell: bash
 
     steps:

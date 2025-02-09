@@ -25,7 +25,7 @@ namespace hackaton_geradorFrame_notifica_dlq.Tests
         {
             // Arrange
             var requisitanteId = Guid.NewGuid();
-            var requisitante = new Requisitante { Id = requisitanteId, Nome = "Teste", Email = "teste@example.com" };
+            var requisitante = new Requisitante { Id = requisitanteId, Email = "teste@example.com" };
             _mockContext.Setup(c => c.LoadAsync<Requisitante>(requisitanteId, default)).ReturnsAsync(requisitante);
 
             // Act
@@ -33,7 +33,6 @@ namespace hackaton_geradorFrame_notifica_dlq.Tests
 
             // Assert
             Assert.Equal(requisitanteId, result.Id);
-            Assert.Equal("Teste", result.Nome);
             Assert.Equal("teste@example.com", result.Email);
         }
 

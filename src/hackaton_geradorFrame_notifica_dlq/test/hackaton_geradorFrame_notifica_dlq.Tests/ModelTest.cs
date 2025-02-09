@@ -10,7 +10,7 @@ namespace hackaton_geradorFrame_notifica_dlq.Tests
         public void GerarEmailErro_DeveRetornarEmailCorreto()
         {
             // Arrange
-            var requisitante = new Requisitante { Email = "teste@example.com", Nome = "Teste" };
+            var requisitante = new Requisitante { Email = "teste@example.com" };
             var nomeVideo = "video.mp4";
             var emailService = new Email();
 
@@ -19,7 +19,7 @@ namespace hackaton_geradorFrame_notifica_dlq.Tests
 
             // Assert
             Assert.Equal("teste@example.com", email.Destinatario);
-            Assert.Equal("Teste", email.Nome);
+            Assert.Equal("Usuario", email.Nome);
             Assert.Equal("Erro ao processar video.", email.Assunto);
             Assert.Equal("O sistema nao conseguiu processar o video video.mp4.", email.Mensagem);
         }
@@ -28,13 +28,13 @@ namespace hackaton_geradorFrame_notifica_dlq.Tests
         public void GerarEmailJsonErro_DeveRetornarJsonCorreto()
         {
             // Arrange
-            var requisitante = new Requisitante { Email = "teste@example.com", Nome = "Teste" };
+            var requisitante = new Requisitante { Email = "teste@example.com" };
             var nomeVideo = "video.mp4";
             var emailService = new Email();
             var email = new Email
             {
                 Destinatario = "teste@example.com",
-                Nome = "Teste",
+                Nome = "Usuario",
                 Assunto = "Erro ao processar video.",
                 Mensagem = "O sistema nao conseguiu processar o video video.mp4."
             };

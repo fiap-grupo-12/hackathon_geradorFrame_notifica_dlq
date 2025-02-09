@@ -1,9 +1,11 @@
 using Amazon.Lambda.Core;
 using Amazon.Lambda.S3Events;
+using Amazon.Lambda.SQSEvents;
 using hackaton_geradorFrame_notifica_dlq.Domain.Model;
 using hackaton_geradorFrame_notifica_dlq.Infra.Interface;
 using Microsoft.Extensions.DependencyInjection;
 using Moq;
+using System.Text.Json;
 using Xunit;
 
 namespace hackaton_geradorFrame_notifica_dlq.Test
@@ -53,12 +55,25 @@ namespace hackaton_geradorFrame_notifica_dlq.Test
             }
             };
 
+            var sqsEvent = new SQSEvent
+            {
+                Records = new List<SQSEvent.SQSMessage>
+                {
+                new SQSEvent.SQSMessage()
+                {
+                    Body = JsonSerializer.Serialize(s3Event).ToLower().Replace("records", "Records"),
+                    ReceiptHandle = "teste"
+                }
+                }
+            };
+
             _requisitanteRepositoryMock.Setup(repo => repo.GetById(It.IsAny<Guid>()))
-                .ReturnsAsync(new Requisitante { Nome = "Teste", Email = "teste@example.com" });
+                .ReturnsAsync(new Requisitante { Email = "teste@example.com" });
             _messageMock.Setup(x => x.SendMessage(It.IsAny<string>())).Returns(Task.FromResult(true));
+            _messageMock.Setup(x => x.DeleteMessage(It.IsAny<string>())).Returns(Task.FromResult(true));
 
             // Act
-            var result = _function.FunctionHandler(s3Event, _contextMock.Object);
+            var result = _function.FunctionHandler(sqsEvent, _contextMock.Object);
 
             // Assert
             Assert.Equal(TaskStatus.RanToCompletion, result.Status);

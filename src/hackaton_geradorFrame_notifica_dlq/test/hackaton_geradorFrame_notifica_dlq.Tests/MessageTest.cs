@@ -46,5 +46,32 @@ namespace hackaton_geradorFrame_notifica_dlq.Tests
             var exception = await Assert.ThrowsAsync<Exception>(() => _message.SendMessage(body));
             Assert.True(exception.Message.Contains("Erro ao enviar mensagem"));
         }
+
+        [Fact]
+        public async Task DeleteMessage_DeveRetornarTrueQuandoDeletarMensagem()
+        {
+            // Arrange
+            var receiptHandle = "dummy-receipt-handle";
+            _mockAmazonSQS.Setup(x => x.DeleteMessageAsync(It.IsAny<DeleteMessageRequest>(), default))
+                          .ReturnsAsync(new DeleteMessageResponse());
+
+            // Act
+            var result = await _message.DeleteMessage(receiptHandle);
+
+            // Assert
+            Assert.True(result);
+        }
+
+        [Fact]
+        public async Task DeleteMessage_DeveLancarExceptionQuandoDeletarMensagem()
+        {
+            // Arrange
+            var receiptHandle = "dummy-receipt-handle";
+            _mockAmazonSQS.Setup(x => x.DeleteMessageAsync(It.IsAny<DeleteMessageRequest>(), default))
+                          .ThrowsAsync(new Exception("Erro ao Deletar a mensagem"));
+
+            // Act & Assert
+            await Assert.ThrowsAsync<Exception>(() => _message.DeleteMessage(receiptHandle));
+        }
     }
 }

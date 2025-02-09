@@ -10,10 +10,7 @@ namespace hackaton_geradorFrame_notifica_dlq.Domain.Model
         [DynamoDBHashKey("id")]
         public Guid Id { get; set; }
 
-        [DynamoDBProperty("Nome")]
-        public string Nome { get; set; }
-
-        [DynamoDBProperty("Email")]
+        [DynamoDBProperty("email")]
         public string Email { get; set; }
     }
 }

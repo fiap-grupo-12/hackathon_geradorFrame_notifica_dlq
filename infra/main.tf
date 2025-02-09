@@ -81,7 +81,8 @@ resource "aws_lambda_function" "lambda_notifica_dlq_function" {
 
   environment {
     variables = {
-      url_sqs_notificacao = data.aws_sqs_queue.sqs_notificacao.id
+      url_sqs_notificacao   = data.aws_sqs_queue.sqs_notificacao.id,
+      url_sqs_processar_dlq = data.aws_sqs_queue.sqs_processar_arquivo_dlq.id
     }
   }
 }

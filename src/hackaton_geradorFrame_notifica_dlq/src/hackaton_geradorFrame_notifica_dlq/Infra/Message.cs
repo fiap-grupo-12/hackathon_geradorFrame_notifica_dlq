@@ -9,11 +9,13 @@ namespace hackaton_geradorFrame_notifica_dlq.Infra
     {
         private readonly IAmazonSQS _amazonSQS;
         private readonly string _url;
+        private readonly string _urlDlq;
         private readonly ILogger<Message> _logger;
         public Message(IAmazonSQS amazonSQS, ILogger<Message> logger)
         {
             _amazonSQS = amazonSQS;
             _url = Environment.GetEnvironmentVariable("url_sqs_notificacao");
+            _urlDlq = Environment.GetEnvironmentVariable("url_sqs_processar_dlq");
             _logger = logger;
         }
 
@@ -34,6 +36,25 @@ namespace hackaton_geradorFrame_notifica_dlq.Infra
             catch (Exception ex)
             {
                 throw new Exception($"Erro ao enviar a mensagem: {ex}");
+            }
+        }
+        
+        public async Task<bool> DeleteMessage(string receiptHandle)
+        {
+            var message = new DeleteMessageRequest()
+            {
+                QueueUrl = _urlDlq,
+                ReceiptHandle = receiptHandle
+            };
+
+            try
+            {
+                await _amazonSQS.DeleteMessageAsync(message);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Erro ao Deletar a mensagem: {ex}");
             }
         }
     }

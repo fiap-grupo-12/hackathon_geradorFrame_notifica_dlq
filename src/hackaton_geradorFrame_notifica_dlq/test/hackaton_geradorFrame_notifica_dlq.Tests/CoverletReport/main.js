@@ -222,8 +222,12 @@ var assemblies = [
     "name": "hackaton_geradorFrame_notifica_dlq",
     "classes": [
       { "name": "hackaton_geradorFrame_notifica_dlq.Domain.Model.Arquivo", "rp": "hackaton_geradorFrame_notifica_dlq_Arquivo.html", "cl": 11, "ucl": 0, "cal": 11, "tl": 22, "cb": 2, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "hackaton_geradorFrame_notifica_dlq.Function", "rp": "hackaton_geradorFrame_notifica_dlq_Function.html", "cl": 20, "ucl": 4, "cal": 24, "tl": 70, "cb": 3, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "hackaton_geradorFrame_notifica_dlq.Infra.Message", "rp": "hackaton_geradorFrame_notifica_dlq_Message.html", "cl": 20, "ucl": 0, "cal": 20, "tl": 40, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "hackaton_geradorFrame_notifica_dlq.Domain.Model.Object", "rp": "hackaton_geradorFrame_notifica_dlq_Object.html", "cl": 1, "ucl": 0, "cal": 1, "tl": 26, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "hackaton_geradorFrame_notifica_dlq.Domain.Model.Record", "rp": "hackaton_geradorFrame_notifica_dlq_Record.html", "cl": 1, "ucl": 0, "cal": 1, "tl": 26, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "hackaton_geradorFrame_notifica_dlq.Domain.Model.S3", "rp": "hackaton_geradorFrame_notifica_dlq_S3.html", "cl": 1, "ucl": 0, "cal": 1, "tl": 26, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "hackaton_geradorFrame_notifica_dlq.Domain.Model.S3MessageEvent", "rp": "hackaton_geradorFrame_notifica_dlq_S3MessageEvent.html", "cl": 1, "ucl": 0, "cal": 1, "tl": 26, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "hackaton_geradorFrame_notifica_dlq.Function", "rp": "hackaton_geradorFrame_notifica_dlq_Function.html", "cl": 27, "ucl": 4, "cal": 31, "tl": 66, "cb": 3, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "hackaton_geradorFrame_notifica_dlq.Infra.Message", "rp": "hackaton_geradorFrame_notifica_dlq_Message.html", "cl": 34, "ucl": 0, "cal": 34, "tl": 61, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "hackaton_geradorFrame_notifica_dlq.Infra.RequisitanteRepository", "rp": "hackaton_geradorFrame_notifica_dlq_RequisitanteRepository.html", "cl": 13, "ucl": 0, "cal": 13, "tl": 33, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
 ];

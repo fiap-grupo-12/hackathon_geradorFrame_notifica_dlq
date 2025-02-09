@@ -22,7 +22,7 @@ namespace hackaton_geradorFrame_notifica_dlq.Domain.Model
         public Email GerarEmailErro(Requisitante requisitante, string nomeVideo) => new Email
         {
             Destinatario = requisitante.Email,
-            Nome = requisitante.Nome,
+            Nome = "Usuario",
             Assunto = "Erro ao processar video.",
             Mensagem = $"O sistema nao conseguiu processar o video {nomeVideo}."
         };
@@ -30,8 +30,7 @@ namespace hackaton_geradorFrame_notifica_dlq.Domain.Model
         public string GerarEmailJsonErro(Requisitante requisitante, string nomeVideo)
         {
             var email = GerarEmailErro(requisitante, nomeVideo);
-            string teste = JsonSerializer.Serialize(email);
-            return teste;
+            return JsonSerializer.Serialize(email);
         }
     }
 }

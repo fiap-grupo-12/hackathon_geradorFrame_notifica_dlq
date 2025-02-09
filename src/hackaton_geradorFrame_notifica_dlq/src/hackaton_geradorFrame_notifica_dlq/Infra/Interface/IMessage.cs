@@ -3,5 +3,6 @@
     public interface IMessage
     {
         public Task<bool> SendMessage(string body);
+        public Task<bool> DeleteMessage(string receiptHandle);
     }
 }
